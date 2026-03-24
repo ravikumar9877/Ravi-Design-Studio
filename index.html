@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ravi Designer — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="dark">
+
+  <!-- ══════════════════════════════════
+       FLOATING PARTICLES CANVAS
+  ══════════════════════════════════ -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- ══════════════════════════════════
+       MAGNETIC CURSOR
+  ══════════════════════════════════ -->
+  <div class="cursor-dot"    id="cursorDot"></div>
+  <div class="cursor-ring"   id="cursorRing"></div>
+
+  <!-- ══════════════════════════════════
+       SIDE MENU OVERLAY
+  ══════════════════════════════════ -->
+  <div class="side-overlay" id="sideOverlay"></div>
+
+  <nav class="side-menu" id="sideMenu" aria-hidden="true">
+    <!-- Decorative orb inside menu -->
+    <div class="menu-orb"></div>
+
+    <div class="menu-header">
+      <span class="menu-logo">portfolio.io</span>
+      <button class="menu-close" id="menuClose" aria-label="Close menu">
+        <span></span><span></span>
+      </button>
+    </div>
+
+    <ul class="menu-links">
+      <li><a href="#home"     class="menu-link" data-index="01" onclick="closeMenu()">Home</a></li>
+      <li><a href="#about"    class="menu-link" data-index="02" onclick="closeMenu()">About</a></li>
+      <li><a href="#projects" class="menu-link" data-index="03" onclick="closeMenu()">Work</a></li>
+      <li><a href="#skills"   class="menu-link" data-index="04" onclick="closeMenu()">Skills</a></li>
+      <li><a href="#process"  class="menu-link" data-index="05" onclick="closeMenu()">Process</a></li>
+      <li><a href="#contact"  class="menu-link" data-index="06" onclick="closeMenu()">Contact</a></li>
+    </ul>
+
+    <div class="menu-footer">
+      <p class="menu-tagline">Crafting Digital Experiences That Matter</p>
+      <div class="menu-socials">
+        <a href="#" class="ms-btn">Dr</a>
+        <a href="#" class="ms-btn">Be</a>
+        <a href="#" class="ms-btn">Li</a>
+        <a href="#" class="ms-btn">Tw</a>
+      </div>
+    </div>
+
+    <!-- Animated lines decoration -->
+    <div class="menu-lines">
+      <div class="ml"></div><div class="ml"></div>
+      <div class="ml"></div><div class="ml"></div>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════
+       PHONE WRAPPER
+  ══════════════════════════════════ -->
+  <div class="phone-wrap">
+    <div class="phone-frame">
+
+      <!-- Notch -->
+      <div class="phone-notch">
+        <div class="notch-pill"></div>
+        <div class="notch-cam"></div>
+      </div>
+
+      <!-- Screen -->
+      <div class="phone-screen" id="screen">
+
+        <!-- ── TOP BAR ── -->
+        <header class="topbar" id="topbar">
+          <!-- <div class="logo">portfolio.io</div> -->
+            <img src="Logo green.svg" alt="">
+          <div class="topbar-right">
+            <div class="theme-toggle" id="themeToggle" title="Toggle theme">
+              <div class="theme-thumb" id="themeThumb"></div>
+              <span class="theme-icon sun">☀️</span>
+              <span class="theme-icon moon">🌙</span>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+              <span class="hb-line hb-top"></span>
+              <span class="hb-line hb-mid"></span>
+              <span class="hb-line hb-bot"></span>
+            </button>
+          </div>
+        </header>
+
+        <!-- ── HERO SECTION ── -->
+        <section class="hero" id="home">
+
+          <!-- Floating geometric shapes -->
+          <div class="float-shapes">
+            <div class="fshape fs1"></div>
+            <div class="fshape fs2"></div>
+            <div class="fshape fs3"></div>
+            <div class="fshape fs4"></div>
+            <div class="fshape fs5"></div>
+          </div>
+
+          <div class="reveal-up stagger-1">
+            <div class="available-badge">
+              <span class="avail-dot"></span>
+              Available for work
+            </div>
+          </div>
+
+          <h1 class="hero-heading reveal-up stagger-2">
+            Crafting<br>
+            Digital <span class="lime typed-wrap"><span class="typed" id="typed"></span><span class="typed-cursor">|</span></span><br>
+            That Matter
+          </h1>
+
+          <p class="hero-sub reveal-up stagger-3">
+            Product designer building intuitive, beautiful interfaces that users genuinely love — from concept to launch.
+          </p>
+
+          <div class="hero-btns reveal-up stagger-4">
+            <button class="btn-solid mag-btn" onclick="goTo('projects')">
+              <span class="btn-text">View Work</span>
+              <span class="btn-arrow">↗</span>
+              <span class="btn-glow"></span>
+            </button>
+            <button class="btn-ghost mag-btn" onclick="goTo('contact')">Hire Me</button>
+          </div>
+
+          <div class="hero-profile reveal-up stagger-5">
+             <div class="about-av">R 
+                <div class="av-ring av-ring1"></div>
+                <div class="av-ring av-ring2"></div>
+              </div>
+            <div class="hero-meta">
+              <div class="hero-name">Ravi Designer</div>
+              <div class="hero-role">Senior UI/UX · Product Design</div>
+            </div>
+            <div class="open-badge">
+              <span class="open-dot"></span>Open
+            </div>
+          </div>
+
+          <!-- Scroll indicator -->
+          <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ── STATS ── -->
+        <section class="section stats-section">
+          <div class="chip reveal-left">by the numbers</div>
+          <div class="sec-head reveal-up">
+            <div class="sec-title">Results That<br>Speak Louder</div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card reveal-scale" data-delay="0">
+              <div class="stat-bg-glow"></div>
+              <div class="stat-num" id="cnt1">0<em>k+</em></div>
+              <div class="stat-label">Users impacted</div>
+            </div>
+            <div class="stat-card reveal-scale" data-delay="100">
+              <div class="stat-bg-glow"></div>
+              <div class="stat-num" id="cnt2">0<em>k+</em></div>
+              <div class="stat-label">Design hours</div>
+            </div>
+            <div class="stat-card reveal-scale" data-delay="200">
+              <div class="stat-bg-glow"></div>
+              <div class="stat-num" id="cnt3">0<em>+</em></div>
+              <div class="stat-label">Screens shipped</div>
+            </div>
+            <div class="stat-card reveal-scale" data-delay="300">
+              <div class="stat-bg-glow"></div>
+              <div class="stat-num">2.5<em>×</em></div>
+              <div class="stat-label">Conversion boost</div>
+            </div>
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ── ABOUT ── -->
+        <section class="section" id="about">
+          <div class="chip reveal-left">about me</div>
+          <div class="sec-head reveal-up">
+            <div class="sec-title">The Designer<br>Behind the Work</div>
+          </div>
+          <div class="about-card reveal-up">
+            <div class="about-head">
+              <div class="about-av">R 
+                <!-- <img src="Logo_green.svg" alt=""> -->
+                <div class="av-ring av-ring1"></div>
+                <div class="av-ring av-ring2"></div>
+              </div>
+              <div>
+                <div class="about-name">Ravi Designer</div>
+                <div class="about-role-t">UI/UX Designer</div>
+                <div class="about-loc">📍 Chennai, India</div>
+              </div>
+            </div>
+            <div class="about-bio">
+              I'm a product designer with 5+ years crafting digital experiences for SaaS, fintech, and mobile apps. I believe great design is invisible — it just works, and it delights. I bridge the gap between business goals and user needs through thoughtful, research-backed design.
+            </div>
+            <div class="tag-row">
+              <span class="tag hover-tag">Figma</span>
+              <span class="tag hover-tag">Prototyping</span>
+              <span class="tag hover-tag">Design Systems</span>
+              <span class="tag hover-tag">User Research</span>
+              <span class="tag hover-tag">Motion</span>
+              <span class="tag hover-tag">Framer</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ── PROJECTS ── -->
+        <section class="section" id="projects" style="padding-bottom:10px">
+          <div class="chip reveal-left">selected work</div>
+          <div class="sec-head reveal-up">
+            <div class="sec-title">Featured Projects</div>
+            <a class="see-all" href="#">All →</a>
+          </div>
+        </section>
+
+        <div class="project-scroll" id="projectScroll">
+
+  <!-- Card 1 -->
+  <div class="proj-card tilt-card reveal-proj" data-delay="0">
+    <div class="proj-thumb pt1">
+      <div class="thumb-glow"></div>
+      <span class="thumb-icon">🏦</span>
+      <div class="proj-shine"></div>
+      <div class="proj-tags">
+        <span class="ptag">Fintech</span>
+        <span class="ptag">Mobile</span>
+      </div>
+    </div>
+    <div class="proj-info">
+      <h3 class="proj-title">NovaPay Banking App</h3>
+      <p class="proj-desc">End-to-end redesign increasing retention by 42%</p>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="proj-card tilt-card reveal-proj" data-delay="100">
+    <div class="proj-thumb pt2">
+      <div class="thumb-glow"></div>
+      <span class="thumb-icon">📊</span>
+      <div class="proj-shine"></div>
+      <div class="proj-tags">
+        <span class="ptag">SaaS</span>
+        <span class="ptag">Dashboard</span>
+      </div>
+    </div>
+    <div class="proj-info">
+      <h3 class="proj-title">Orion Analytics</h3>
+      <p class="proj-desc">Data visualization platform for enterprise</p>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="proj-card tilt-card reveal-proj" data-delay="200">
+    <div class="proj-thumb pt3">
+      <div class="thumb-glow"></div>
+      <span class="thumb-icon">🛍️</span>
+      <div class="proj-shine"></div>
+      <div class="proj-tags">
+        <span class="ptag">E-comm</span>
+        <span class="ptag">iOS</span>
+      </div>
+    </div>
+    <div class="proj-info">
+      <h3 class="proj-title">Luxe Shop App</h3>
+      <p class="proj-desc">Premium shopping with AR try-on</p>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="proj-card tilt-card reveal-proj" data-delay="300">
+    <div class="proj-thumb pt4">
+      <div class="thumb-glow"></div>
+      <span class="thumb-icon">🌿</span>
+      <div class="proj-shine"></div>
+      <div class="proj-tags">
+        <span class="ptag">Health</span>
+        <span class="ptag">Wellness</span>
+      </div>
+    </div>
+    <div class="proj-info">
+      <h3 class="proj-title">Zen Wellness</h3>
+      <p class="proj-desc">Mental health tracker with mood analytics</p>
+    </div>
+  </div>
+
+</div>
+
+        <div style="height:28px"></div>
+        <div class="divider"></div>
+
+        <!-- ── SKILLS ── -->
+        <section class="section" id="skills">
+          <div class="chip reveal-left">expertise</div>
+          <div class="sec-head reveal-up">
+            <div class="sec-title">Core Skills</div>
+          </div>
+          <div class="skill-list" id="skillList">
+            <div class="skill-row reveal-skill" data-delay="0">
+              <div class="skill-top">
+                <span class="skill-name">UI Design &amp; Visual</span>
+                <span class="skill-pct">95%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill sf-lime" data-w="95">
+                  <div class="skill-shimmer"></div>
+                </div>
+              </div>
+            </div>
+            <div class="skill-row reveal-skill" data-delay="100">
+              <div class="skill-top">
+                <span class="skill-name">UX Research</span>
+                <span class="skill-pct">88%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill sf-purple" data-w="88">
+                  <div class="skill-shimmer"></div>
+                </div>
+              </div>
+            </div>
+            <div class="skill-row reveal-skill" data-delay="200">
+              <div class="skill-top">
+                <span class="skill-name">Prototyping &amp; Motion</span>
+                <span class="skill-pct">82%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill sf-pink" data-w="82">
+                  <div class="skill-shimmer"></div>
+                </div>
+              </div>
+            </div>
+            <div class="skill-row reveal-skill" data-delay="300">
+              <div class="skill-top">
+                <span class="skill-name">Design Systems</span>
+                <span class="skill-pct">90%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill sf-teal" data-w="90">
+                  <div class="skill-shimmer"></div>
+                </div>
+              </div>
+            </div>
+            <div class="skill-row reveal-skill" data-delay="400">
+              <div class="skill-top">
+                <span class="skill-name">HTML / CSS / Framer</span>
+                <span class="skill-pct">75%</span>
+              </div>
+              <div class="skill-track">
+                <div class="skill-fill sf-lime" data-w="75">
+                  <div class="skill-shimmer"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ── SERVICES ── -->
+        <section class="section">
+          <div class="chip reveal-left">what i do</div>
+          <div class="sec-head reveal-up">
+            <div class="sec-title">Services</div>
+          </div>
+          <div class="svc-list">
+            <div class="svc-item reveal-svc mag-btn" data-delay="0">
+              <div class="svc-icon si1"><span>🎨</span></div>
+              <div class="svc-text">
+                <div class="svc-name">UI / Visual Design</div>
+                <div class="svc-desc">Pixel-perfect screens, design systems &amp; brand</div>
+              </div>
+              <div class="svc-arrow">›</div>
+            </div>
+            <div class="svc-item reveal-svc mag-btn" data-delay="100">
+              <div class="svc-icon si2"><span>🔬</span></div>
+              <div class="svc-text">
+                <div class="svc-name">UX Research</div>
+                <div class="svc-desc">User interviews, usability tests &amp; journey maps</div>
+              </div>
+              <div class="svc-arrow">›</div>
+            </div>
+            <div class="svc-item reveal-svc mag-btn" data-delay="200">
+              <div class="svc-icon si3"><span>📱</span></div>
+              <div class="svc-text">
+                <div class="svc-name">Mobile App Design</div>
+                <div class="svc-desc">Native iOS &amp; Android experiences</div>
+              </div>
+              <div class="svc-arrow">›</div>
+            </div>
+            <div class="svc-item reveal-svc mag-btn" data-delay="300">
+              <div class="svc-icon si4"><span>⚡</span></div>
+              <div class="svc-text">
+                <div class="svc-name">Prototyping</div>
+                <div class="svc-desc">Interactive Figma &amp; Framer prototypes</div>
+              </div>
+              <div class="svc-arrow">›</div>
+            </div>
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ── PROCESS ── -->
+        <section class="section" id="process">
+          <div class="chip reveal-left">how i work</div>
+          <div class="sec-head reveal-up">
+            <div class="sec-title">My Process</div>
+          </div>
+          <div class="process-list" id="procList">
+            <div class="proc-item active reveal-proc" data-delay="0">
+              <div class="proc-left">
+                <div class="proc-num">01</div>
+                <div class="proc-line"></div>
+              </div>
+              <div class="proc-content">
+                <div class="proc-title">Discover &amp; Research</div>
+                <div class="proc-desc">Deep dive into user needs, business goals, and competitive landscape.</div>
+              </div>
+            </div>
+            <div class="proc-item reveal-proc" data-delay="80">
+              <div class="proc-left">
+                <div class="proc-num">02</div>
+                <div class="proc-line"></div>
+              </div>
+              <div class="proc-content">
+                <div class="proc-title">Define &amp; Strategize</div>
+                <div class="proc-desc">Synthesize insights into clear problem statements and measurable goals.</div>
+              </div>
+            </div>
+            <div class="proc-item reveal-proc" data-delay="160">
+              <div class="proc-left">
+                <div class="proc-num">03</div>
+                <div class="proc-line"></div>
+              </div>
+              <div class="proc-content">
+                <div class="proc-title">Design &amp; Prototype</div>
+                <div class="proc-desc">Rapid iteration from wireframes to high-fidelity interactive prototypes.</div>
+              </div>
+            </div>
+            <div class="proc-item reveal-proc" data-delay="240">
+              <div class="proc-left">
+                <div class="proc-num">04</div>
+                <div class="proc-line"></div>
+              </div>
+              <div class="proc-content">
+                <div class="proc-title">Test &amp; Refine</div>
+                <div class="proc-desc">Usability testing with real users and iterating until the design truly works.</div>
+              </div>
+            </div>
+            <div class="proc-item reveal-proc" data-delay="320">
+              <div class="proc-left">
+                <div class="proc-num">05</div>
+                <div class="proc-line"></div>
+              </div>
+              <div class="proc-content">
+                <div class="proc-title">Deliver &amp; Support</div>
+                <div class="proc-desc">Handoff with comprehensive docs and developer support during build.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ── TESTIMONIALS ── -->
+        <section class="section" style="padding-bottom:10px">
+  <div class="chip reveal-left">kind words</div>
+  <div class="sec-head reveal-up">
+    <div class="sec-title">What Clients Say</div>
+  </div>
+
+  <div class="testi-scroll">
+    <div class="testi-card reveal-testi" data-delay="0">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">Ravi transformed our clunky app into something users love. Conversion jumped 60% in two months. Incredibly talented.</div>
+      <div class="testi-author">
+        <div class="testi-av ta1">JM</div>
+        <div><div class="testi-nm">James Martin</div><div class="testi-role">CEO, NovaPay</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal-testi" data-delay="100">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">The attention to detail is unreal. Every pixel has purpose. Support tickets dropped 35% because the UX is so clear.</div>
+      <div class="testi-author">
+        <div class="testi-av ta2">SR</div>
+        <div><div class="testi-nm">Sara Reed</div><div class="testi-role">CPO, Orion Analytics</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal-testi" data-delay="200">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">Working with Ravi felt like having a design co-founder. They understand business, not just aesthetics. Will work again.</div>
+      <div class="testi-author">
+        <div class="testi-av ta3">PK</div>
+        <div><div class="testi-nm">Priya Kumar</div><div class="testi-role">Founder, Zen Wellness</div></div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div style="height:28px"></div>
+<div class="divider"></div>
+
+        <!-- ── FAQ ── -->
+        <section class="section">
+          <div class="chip reveal-left">faq</div>
+          <div class="sec-head reveal-up">
+            <div class="sec-title">Questions &amp;<br>Answers</div>
+          </div>
+          <div class="faq-list">
+            <div class="faq-item open reveal-faq" data-faq data-delay="0">
+              <div class="faq-q">
+                <span>What tools do you use?</span>
+                <span class="faq-icon">+</span>
+              </div>
+              <div class="faq-a">Figma for UI and prototyping, Framer for advanced interactions, Maze &amp; Lookback for testing, Notion for documentation. Handoff via Zeplin or Figma's native tools.</div>
+            </div>
+            <div class="faq-item reveal-faq" data-faq data-delay="80">
+              <div class="faq-q">
+                <span>What's your typical timeline?</span>
+                <span class="faq-icon">+</span>
+              </div>
+              <div class="faq-a">A sprint runs 4–8 weeks. A full end-to-end design (research → hi-fi → handoff) usually takes 10–16 weeks depending on scope and feedback cycles.</div>
+            </div>
+            <div class="faq-item reveal-faq" data-faq data-delay="160">
+              <div class="faq-q">
+                <span>Do you work with developers?</span>
+                <span class="faq-icon">+</span>
+              </div>
+              <div class="faq-a">Absolutely. I provide thorough design specs, component libraries, and stay available throughout the development phase to answer questions and review implementations.</div>
+            </div>
+            <div class="faq-item reveal-faq" data-faq data-delay="240">
+              <div class="faq-q">
+                <span>Are you available for freelance?</span>
+                <span class="faq-icon">+</span>
+              </div>
+              <div class="faq-a">Yes! I'm currently open to freelance projects and select collaborations. Drop me an email and let's discuss what you're building together.</div>
+            </div>
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ── CONTACT ── -->
+        <section class="section" id="contact">
+          <div class="chip reveal-left">get in touch</div>
+          <div class="contact-card reveal-up">
+            <div class="contact-orb"></div>
+            <div class="contact-heading">Let's <span>Build</span><br>Something Great</div>
+            <div class="contact-sub">Have a project in mind? I'd love to hear about it. Let's create something amazing together.</div>
+
+            <a class="contact-row mag-btn" href="mailto:Ravi@portfolio.io">
+              <span class="cr-icon">✉️</span>
+              <span class="cr-text">ravikumar94051@gmail.com</span>
+              <span class="cr-arrow">›</span>
+            </a>
+            <a class="contact-row mag-btn" href="tel:+14155550172">
+              <span class="cr-icon">📞</span>
+              <span class="cr-text">(+91) 7010108102</span>
+              <span class="cr-arrow">›</span>
+            </a>
+            <a class="contact-row mag-btn" href="#">
+              <span class="cr-icon">📅</span>
+              <span class="cr-text">Schedule a call →</span>
+              <span class="cr-arrow">›</span>
+            </a>
+
+            <div class="social-row">
+              <a class="soc-btn mag-btn" href="#" title="Dribbble">🏀</a>
+              <a class="soc-btn mag-btn" href="#" title="Behance">🅱</a>
+              <a class="soc-btn mag-btn" href="#" title="LinkedIn">💼</a>
+              <a class="soc-btn mag-btn" href="#" title="Twitter">🐦</a>
+              <a class="soc-btn mag-btn" href="#" title="GitHub">🐙</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── FOOTER ── -->
+        <footer class="footer">
+          <div class="footer-txt">Made with <span class="heart">♥</span> by Ravi Designer · 2025</div>
+        </footer>
+
+        <!-- ── BOTTOM NAV ── -->
+        <nav class="bottom-nav" id="bottomNav">
+          <div class="nav-item active" data-nav="home"     onclick="goTo('home')">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-lbl">Home</span>
+            <span class="nav-pip"></span>
+          </div>
+          <div class="nav-item" data-nav="about"    onclick="goTo('about')">
+            <span class="nav-icon">👤</span>
+            <span class="nav-lbl">About</span>
+            <span class="nav-pip"></span>
+          </div>
+          <div class="nav-item" data-nav="projects" onclick="goTo('projects')">
+            <span class="nav-icon">📁</span>
+            <span class="nav-lbl">Work</span>
+            <span class="nav-pip"></span>
+          </div>
+          <div class="nav-item" data-nav="contact"  onclick="goTo('contact')">
+            <span class="nav-icon">✉️</span>
+            <span class="nav-lbl">Contact</span>
+            <span class="nav-pip"></span>
+          </div>
+        </nav>
+
+      </div><!-- /phone-screen -->
+    </div><!-- /phone-frame -->
+  </div><!-- /phone-wrap -->
+
+  <script src="script.js"></script>
+</body>
+</html>
